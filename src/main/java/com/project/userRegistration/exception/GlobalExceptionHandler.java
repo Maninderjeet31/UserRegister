@@ -6,12 +6,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -39,25 +35,4 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
     }
-
-    /*
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<RegistrationFailedMessage> constraintFailHandler(ConstraintViolationException e){
-
-        Set<String> errorMap = new HashSet<>();
-
-        for (ConstraintViolation<?> violation : e.getConstraintViolations()) {
-            String message = violation.getMessage();
-            errorMap.add(message);
-        }
-
-        RegistrationFailedMessage response = new RegistrationFailedMessage();
-
-        response.setMessage(errorMap.stream().findFirst().get() + "\n");
-        response.setStatus(HttpStatus.BAD_REQUEST.value());
-        response.setTimeStamp(System.currentTimeMillis());
-
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-    }
-     */
 }

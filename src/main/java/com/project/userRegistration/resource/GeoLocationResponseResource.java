@@ -1,6 +1,5 @@
 package com.project.userRegistration.resource;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GeoLocationresponseResource {
+public class GeoLocationResponseResource {
 
     private String query;
     private String status;

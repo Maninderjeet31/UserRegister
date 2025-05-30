@@ -1,6 +1,6 @@
 package com.project.userRegistration.controller;
 
-import com.project.userRegistration.resource.GeoLocationresponseResource;
+import com.project.userRegistration.resource.GeoLocationResponseResource;
 import com.project.userRegistration.resource.RegistrationResponseResource;
 import com.project.userRegistration.resource.RegistrationStatusMessage;
 import com.project.userRegistration.resource.UserRegistrationInput;
@@ -9,7 +9,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -34,7 +33,7 @@ public class UserRegistrationController {
         log.info("IP Address requested for {}", userRegistrationInput.getIpAddress());
 
         //Fetching the response from API with IP Address
-        Optional<GeoLocationresponseResource> response = userService.getLocation(userRegistrationInput.getIpAddress());
+        Optional<GeoLocationResponseResource> response = userService.getLocation(userRegistrationInput.getIpAddress());
 
         if(response.isPresent() && response.get().getStatus().trim().equalsIgnoreCase("success")){
 
