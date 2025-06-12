@@ -6,18 +6,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Optional;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GeoLocationResponseResource {
-
-    private String query;
-    private String status;
-    private String country;
-    private String countryCode;
-    private String city;
-    private float lat;
-    private float lon;
-    private WeatherResponseResource weatherResponse;
+public class WeatherApiResponseResource {
+    private boolean found;
+    private WeatherResponseResource message;
 }

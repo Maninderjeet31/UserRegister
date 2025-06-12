@@ -18,6 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
+*.class
 
 ### NetBeans ###
 /nbproject/private/
@@ -42,3 +43,5 @@ build/
 ehthumbs.db
 Thumbs.db.DS_Store
 .DS_Store
+.idea/workspace.xml
+*.class

@@ -1,3 +1,30 @@
 spring:
   application:
-    name: UserRegistration
+    name: USER-SERVICE
+  security:
+    user:
+      name: user
+      password: 'test123'
+      roles: USER, ADMIN
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  cloud:
+    discovery:
+      enabled: true
+
+server:
+  port: 8081
+
+eureka:
+  instances:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+  service-url:
+    defaultZone: http://localhost:8761/eureka

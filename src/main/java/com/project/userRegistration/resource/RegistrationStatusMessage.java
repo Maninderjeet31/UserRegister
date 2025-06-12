@@ -11,4 +11,7 @@ public class RegistrationStatusMessage {
     private String status;
     private String name;
     private String country;
+    private double cityTemperature;
+    private String temperatureUnit;
 }
+

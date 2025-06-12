@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -46,8 +47,9 @@ public class UserRegistrationControllerTest {
     public void registerUser_success() throws Exception {
         UserRegistrationInput request = createRegistrationresource();
         GeoLocationResponseResource response = createGeoResponse(anyString());
+        UUID RANDOM_UUID = UUID.randomUUID();
 
-        when(userService.getLocation(request.getIpAddress()))
+        when(userService.getLocation(request.getIpAddress(), RANDOM_UUID, request.getUsername()))
                 .thenReturn(Optional.of(response));
 
         mockMvc.perform(post(URL)
@@ -64,8 +66,9 @@ public class UserRegistrationControllerTest {
     public void registerUser_whenOutsideOfCanada_fail() throws Exception {
         UserRegistrationInput request = createRegistrationresource();
         GeoLocationResponseResource response = createGeoResponseOutsideOfCanada(anyString());
+        UUID RANDOM_UUID = UUID.randomUUID();
 
-        when(userService.getLocation(request.getIpAddress()))
+        when(userService.getLocation(request.getIpAddress(), RANDOM_UUID, request.getUsername()))
                 .thenReturn(Optional.of(response));
 
         mockMvc.perform(post(URL)
@@ -82,8 +85,9 @@ public class UserRegistrationControllerTest {
     public void registerUser_whenIpAddressNotFound_fail() throws Exception {
         UserRegistrationInput request = createInvalidIPRegistrationresource();
         GeoLocationResponseResource response = createFailGeoResponse(anyString());
+        UUID RANDOM_UUID = UUID.randomUUID();
 
-        when(userService.getLocation(request.getIpAddress()))
+        when(userService.getLocation(request.getIpAddress(), RANDOM_UUID, request.getUsername()))
                 .thenReturn(Optional.of(response));
 
         mockMvc.perform(post(URL)
